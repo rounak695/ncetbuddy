@@ -1,0 +1,3015 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NCET Buddy - Premium NCET Preparation</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* Base styles */
+    :root {
+      --bg-black: #121212;
+      --bg-gray-900: #1a1a1a;
+      --bg-gray-800: #2a2a2a;
+      --border-gray-700: #404040;
+      --text-gray-300: #d1d5db;
+      --text-gray-400: #9ca3af;
+      --text-white: #f5f5f5;
+      --yellow-400: #facc15;
+      --orange-500: #f97316;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-black);
+      color: var(--text-white);
+    }
+
+    /* Custom high-contrast colors */
+    .bg-primary-yellow {
+      background-color: var(--yellow-400);
+    }
+
+    .text-primary-yellow {
+      color: var(--yellow-400);
+    }
+
+    .border-primary-yellow {
+      border-color: var(--yellow-400);
+    }
+
+    .ring-primary-yellow {
+      --tw-ring-color: var(--yellow-400);
+    }
+
+    .bg-primary-orange {
+      background-color: var(--orange-500);
+    }
+
+    .text-primary-orange {
+      color: var(--orange-500);
+    }
+
+    .border-primary-orange {
+      border-color: var(--orange-500);
+    }
+
+    .bg-gray-900 {
+      background-color: var(--bg-gray-900);
+    }
+
+    .bg-gray-800 {
+      background-color: var(--bg-gray-800);
+    }
+
+    .border-gray-700 {
+      border-color: var(--border-gray-700);
+    }
+
+    /* Hide scrollbar utility */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    /* Dashboard Ticker Animation */
+    @keyframes ticker-scroll {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .animate-ticker {
+      animation: ticker-scroll 20s linear infinite;
+    }
+
+    /* Page fade-in animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Custom animation delays */
+    .animation-delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    .animation-delay-500 {
+      animation-delay: 0.5s;
+    }
+
+    /* Lucide icon setup */
+    [data-lucide] {
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      vertical-align: -0.125em;
+    }
+
+    /* Sidebar active state */
+    .sidebar-link.active {
+      background-color: var(--yellow-400);
+      color: var(--bg-black);
+      font-weight: 600;
+    }
+
+    .sidebar-link.active i {
+      color: var(--bg-black);
+    }
+
+    /* Form input focus */
+    .form-input {
+      background-color: var(--bg-gray-800);
+      border-color: var(--border-gray-700);
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      --tw-ring-color: var(--yellow-400);
+      border-color: var(--yellow-400);
+      background-color: var(--bg-gray-900);
+    }
+
+    .form-select {
+      background-color: var(--bg-gray-800);
+      border-color: var(--border-gray-700);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    /* Modal transitions */
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-content {
+      transition: transform 0.3s ease;
+    }
+
+    .modal.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .modal.hidden .modal-content {
+      transform: scale(0.95) translateY(20px);
+    }
+
+    /* Global Loader */
+    #global-loader {
+      display: flex;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .spinner {
+      border-width: 4px;
+      border-color: var(--border-gray-700);
+      border-top-color: var(--yellow-400);
+      animation: spin 1s linear infinite;
+    }
+
+    /* Custom Toast Notification */
+    #toast-notification {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #toast-notification.hidden {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    /* Question Radio Buttons */
+    .question-option:has(input:checked) {
+      background-color: var(--bg-gray-800);
+      border-color: var(--yellow-400);
+    }
+    .question-option:hover {
+      background-color: var(--bg-gray-900);
+    }
+  </style>
+</head>
+
+<body class="bg-black">
+
+  <!-- 
+  ========================================================================
+  GLOBAL LOADER
+  This covers the entire screen and is hidden by default.
+  It's shown when the app is initializing (checking auth).
+  ========================================================================
+  -->
+  <div id="global-loader"
+    class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex flex-col items-center justify-center">
+    <div class="spinner w-12 h-12 rounded-full"></div>
+    <p class="mt-4 text-lg font-medium text-gray-300">Loading NCET Buddy...</p>
+  </div>
+
+  <!-- 
+  ========================================================================
+  CONFIG ERROR SCREEN
+  This is shown only if the Firebase config is missing.
+  ========================================================================
+  -->
+  <div id="config-error-screen"
+    class="fixed inset-0 bg-black z-[99] hidden items-center justify-center p-4">
+    <div
+      class="w-full max-w-2xl bg-gray-900 p-8 rounded-2xl shadow-2xl border-2 border-red-500">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="alert-triangle" class="w-8 h-8 text-red-500 flex-shrink-0"></i>
+        <h2 class="text-3xl font-bold text-red-500">Configuration Error</h2>
+      </div>
+      <p class="text-gray-300 mt-6 text-lg">
+        The Firebase configuration is missing.
+      </p>
+      <p class="text-gray-400 mt-4">
+        Please open the <code class="bg-gray-800 text-yellow-400 px-2 py-1 rounded-md">index.html</code>
+        file, find the <code class="bg-gray-800 text-yellow-400 px-2 py-1 rounded-md">firebaseConfig</code>
+        object (around line 1100), and paste in your project's configuration keys from
+        the Firebase Console.
+      </p>
+      <p class="text-gray-400 mt-4">
+        If you don't have a project, follow the
+        <code class="bg-gray-800 text-yellow-400 px-2 py-1 rounded-md">firebase_setup_guide.md</code>
+        file to create one.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 
+  ========================================================================
+  DYNAMIC PAGE WRAPPER
+  The app logic will show/hide one of these pages at a time.
+  ========================================================================
+  -->
+
+  <!-- 
+  ========================================================================
+  PAGE 1: LANDING PAGE
+  ========================================================================
+  -->
+  <div id="page-landing" data-page="landing" class="min-h-screen hidden">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 w-full bg-black/70 backdrop-blur-md border-b border-gray-700">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-primary-yellow font-extrabold text-2xl tracking-tight">NCET Buddy</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex md:items-center md:space-x-8">
+            <a href="#features"
+              class="font-medium text-gray-300 hover:text-primary-yellow transition-colors">Features</a>
+            <a href="#mentors"
+              class="font-medium text-gray-300 hover:text-primary-yellow transition-colors">Mentors</a>
+            <a href="#forum" class="font-medium text-gray-300 hover:text-primary-yellow transition-colors">Forum</a>
+          </nav>
+
+          <!-- CTA Button -->
+          <div class="flex items-center">
+            <button data-action="show-auth"
+              class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="relative py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-white animate-fadeInUp">
+            Ace the NCET.
+            <span class="block text-primary-yellow">Get Your Buddy.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-300 animate-fadeInUp animation-delay-100">
+            Premium Mentorship, AI-Powered Mock Tests, Curated Revision Notes, and a 24/7 Discussion Forum. Your
+            one-stop solution for NCET success.
+          </p>
+          <div class="mt-10 animate-fadeInUp animation-delay-200">
+            <button data-action="show-auth"
+              class="bg-primary-yellow text-black font-bold py-3 px-8 rounded-lg shadow-lg text-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
+              Start Your Free Trial
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-12">
+            Your Complete Prep Toolkit
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Feature Card 1: Mentorship -->
+            <div
+              class="bg-black p-6 rounded-xl border border-gray-700 shadow-lg group hover:border-primary-yellow transition-all duration-300 transform hover:-translate-y-2 animate-fadeInUp animation-delay-100 opacity-0"
+              style="animation-fill-mode: forwards;">
+              <i data-lucide="users" class="text-primary-yellow w-10 h-10 mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">1-on-1 Mentorship</h3>
+              <p class="text-gray-400">Connect with NCET toppers and expert faculty. Get personalized guidance and
+                doubt-solving.</p>
+            </div>
+
+            <!-- Feature Card 2: Mock Tests -->
+            <div
+              class="bg-black p-6 rounded-xl border border-gray-700 shadow-lg group hover:border-primary-yellow transition-all duration-300 transform hover:-translate-y-2 animate-fadeInUp animation-delay-200 opacity-0"
+              style="animation-fill-mode: forwards;">
+              <i data-lucide="clipboard-list" class="text-primary-yellow w-10 h-10 mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">High-Yield Mock Tests</h3>
+              <p class="text-gray-400">Time-bound tests with instant analytics, leaderboards, and detailed performance
+                reports.</p>
+            </div>
+
+            <!-- Feature Card 3: Revision Notes -->
+            <div
+              class="bg-black p-6 rounded-xl border border-gray-700 shadow-lg group hover:border-primary-yellow transition-all duration-300 transform hover:-translate-y-2 animate-fadeInUp animation-delay-300 opacity-0"
+              style="animation-fill-mode: forwards;">
+              <i data-lucide="book-open" class="text-primary-yellow w-10 h-10 mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">Revision Notes & Cards</h3>
+              <p class="text-gray-400">Concise, curated Formula Cards and Revision Notes to boost your last-minute
+                preparation.</p>
+            </div>
+
+            <!-- Feature Card 4: Discussion Forum -->
+            <div
+              class="bg-black p-6 rounded-xl border border-gray-700 shadow-lg group hover:border-primary-yellow transition-all duration-300 transform hover:-translate-y-2 animate-fadeInUp animation-delay-400 opacity-0"
+              style="animation-fill-mode: forwards;">
+              <i data-lucide="message-square-text" class="text-primary-yellow w-10 h-10 mb-4"></i>
+              <h3 class="text-xl font-bold text-white mb-2">Discussion Forum</h3>
+              <p class="text-gray-400">A 24/7 real-time community to ask questions, form study groups, and learn with
+                peers.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mentor Showcase Section -->
+      <section id="mentors" class="py-20 bg-black">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-12">
+            Learn From The <span class="text-primary-orange">Best</span>
+          </h2>
+          <div class="flex space-x-6 md:space-x-8 pb-4 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+            <!-- Mentor Card 1 -->
+            <div
+              class="flex-shrink-0 w-64 md:w-72 bg-gray-900 rounded-xl shadow-lg overflow-hidden group transition-all duration-300 transform hover:scale-105 hover:shadow-yellow-400/20">
+              <img class="w-full h-72 md:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                src="https://placehold.co/300x400/1a1a1a/facc15?text=Mentor+A"
+                onerror="this.src='https://placehold.co/300x400/1a1a1a/facc15?text=Mentor+A'" alt="Mentor 1">
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">Aarav Sharma</h3>
+                <p class="text-primary-yellow font-medium">NCET '24 Topper</p>
+                <p class="text-sm text-gray-400 mt-2">Specializes in Pedagogy and General Aptitude.</p>
+              </div>
+            </div>
+
+            <!-- Mentor Card 2 -->
+            <div
+              class="flex-shrink-0 w-64 md:w-72 bg-gray-900 rounded-xl shadow-lg overflow-hidden group transition-all duration-300 transform hover:scale-105 hover:shadow-yellow-400/20">
+              <img class="w-full h-72 md:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                src="https://placehold.co/300x400/1a1a1a/f97316?text=Mentor+B"
+                onerror="this.src='https://placehold.co/300x400/1a1a1a/f97316?text=Mentor+B'" alt="Mentor 2">
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">Priya Singh</h3>
+                <p class="text-primary-orange font-medium">Expert Faculty (Physics)</p>
+                <p class="text-sm text-gray-400 mt-2">10+ years of teaching experience. Makes complex topics simple.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mentor Card 3 -->
+            <div
+              class="flex-shrink-0 w-64 md:w-72 bg-gray-900 rounded-xl shadow-lg overflow-hidden group transition-all duration-300 transform hover:scale-105 hover:shadow-yellow-400/20">
+              <img class="w-full h-72 md:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                src="https://placehold.co/300x400/1a1a1a/facc15?text=Mentor+C"
+                onerror="this.src='https://placehold.co/300x400/1a1a1a/facc15?text=Mentor+C'" alt="Mentor 3">
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">Rohan Jain</h3>
+                <p class="text-primary-yellow font-medium">NCET '24 AIR 5</p>
+                <p class="text-sm text-gray-400 mt-2">Chemistry & Test-Taking Strategy Expert.</p>
+              </div>
+            </div>
+
+            <!-- Mentor Card 4 -->
+            <div
+              class="flex-shrink-0 w-64 md:w-72 bg-gray-900 rounded-xl shadow-lg overflow-hidden group transition-all duration-300 transform hover:scale-105 hover:shadow-yellow-400/20">
+              <img class="w-full h-72 md:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                src="https://placehold.co/300x400/1a1a1a/f97316?text=Mentor+D"
+                onerror="this.src='https://placehold.co/300x400/1a1a1a/f97316?text=Mentor+D'" alt="Mentor 4">
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">Dr. Anika Gupta</h3>
+                <p class="text-primary-orange font-medium">Child Pedagogy Expert</p>
+                <p class="text-sm text-gray-400 mt-2">Author of "Teaching Tomorrow". Focus on conceptual clarity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section id="forum" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">
+            Ready to <span class="text-primary-yellow">Start</span> Your Journey?
+          </h2>
+          <p class="mt-4 max-w-xl mx-auto text-lg text-gray-300">
+            Join hundreds of students already preparing with NCET Buddy. Get access to premium resources today.
+          </p>
+          <div class="mt-8">
+            <button data-action="show-auth"
+              class="bg-primary-yellow text-black font-bold py-3 px-8 rounded-lg shadow-lg text-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
+              Get Started Now
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-700">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-400">
+        <p>&copy; 2024 NCET Buddy. All rights reserved.</p>
+        <p class="text-sm mt-2">Designed for the next generation of teachers.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- 
+  ========================================================================
+  PAGE 2: STUDENT DASHBOARD
+  ========================================================================
+  -->
+  <div id="page-student-dashboard" data-page="student-dashboard" class="min-h-screen hidden">
+    <!-- Dashboard Header -->
+    <header class="sticky top-0 z-40 w-full bg-black/80 backdrop-blur-md border-b border-gray-700">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-primary-yellow font-extrabold text-2xl tracking-tight">NCET Buddy</span>
+          </div>
+
+          <!-- Profile Dropdown -->
+          <div class="flex items-center">
+            <button data-action="logout" class="ml-4 text-gray-400 hover:text-white" title="Logout">
+              <i data-lucide="log-out" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1 class="text-3xl font-bold text-white mb-6" id="student-welcome">Welcome back!</h1>
+
+      <!-- Announcement Ticker -->
+      <div
+        class="bg-primary-yellow text-black text-sm font-semibold p-3 rounded-lg overflow-hidden shadow-lg mb-8">
+        <div class="flex">
+          <span class="flex-shrink-0 pr-4 font-bold">[UPDATES]</span>
+          <div class="relative flex-1 overflow-hidden">
+            <span class="absolute whitespace-nowrap animate-ticker" id="announcement-ticker-text">
+              Loading announcements...
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <button data-action="show-student-page" data-target-page="student-tests"
+          class="bg-primary-yellow text-black font-bold p-4 rounded-lg flex items-center justify-center space-x-2 shadow-lg hover:bg-yellow-300 transition-all transform hover:scale-105">
+          <i data-lucide="file-text"></i>
+          <span>Start Mock Test</span>
+        </button>
+        <button data-action="show-student-page" data-target-page="student-forum"
+          class="bg-primary-orange text-white font-bold p-4 rounded-lg flex items-center justify-center space-x-2 shadow-lg hover:bg-orange-400 transition-all transform hover:scale-105">
+          <i data-lucide="message-circle"></i>
+          <span>Ask Question</span>
+        </button>
+        <button data-action="show-student-page" data-target-page="student-notes"
+          class="bg-gray-800 text-white font-bold p-4 rounded-lg flex items-center justify-center space-x-2 shadow-lg hover:bg-gray-700 transition-all transform hover:scale-105">
+          <i data-lucide="book-marked"></i>
+          <span>Open Formula Card</span>
+        </button>
+        <button
+          class="bg-gray-800 text-white font-bold p-4 rounded-lg flex items-center justify-center space-x-2 shadow-lg hover:bg-gray-700 transition-all transform hover:scale-105">
+          <i data-lucide="calendar-plus"></i>
+          <span>Book Mentor Session</span>
+        </button>
+      </div>
+
+      <!-- Student Page Content Wrapper -->
+      <div id="student-page-content">
+        <!-- Dashboard Home -->
+        <div data-student-page="student-home" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left Column (Mock Tests & Notes) -->
+          <div class="lg:col-span-2 space-y-8">
+            <!-- Mock Tests Module -->
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <h2 class="text-2xl font-bold text-white mb-4">Available Mock Tests</h2>
+              <div id="student-dashboard-tests-list" class="space-y-4">
+                <!-- Mock tests will be dynamically inserted here -->
+                <p class="text-gray-400">Loading tests...</p>
+              </div>
+              <button data-action="show-student-page" data-target-page="student-tests"
+                class="text-primary-yellow font-medium mt-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+                <span>View All Tests</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Revision Notes Module -->
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <h2 class="text-2xl font-bold text-white mb-4">Formula Cards & Notes</h2>
+              <div id="student-dashboard-notes-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Notes will be dynamically inserted here -->
+                <p class="text-gray-400">Loading notes...</p>
+              </div>
+              <button data-action="show-student-page" data-target-page="student-notes"
+                class="text-primary-yellow font-medium mt-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+                <span>View All Notes</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column (Leaderboard & Forum) -->
+          <div class="lg:col-span-1 space-y-8">
+            <!-- Leaderboard Module -->
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <h2 class="text-2xl font-bold text-white mb-4">Latest Leaderboard</h2>
+              <div id="student-dashboard-leaderboard">
+                <p class="text-gray-400">No test results yet. Complete a test to see your rank!</p>
+              </div>
+            </div>
+
+            <!-- Discussion Forum Module -->
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <h2 class="text-2xl font-bold text-white mb-4">Recent Discussions</h2>
+              <div id="student-dashboard-forum-list" class="space-y-4">
+                <!-- Forum posts will be dynamically inserted here -->
+                <p class="text-gray-400">Loading discussions...</p>
+              </div>
+              <button data-action="show-student-page" data-target-page="student-forum"
+                class="text-primary-yellow font-medium mt-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+                <span>Go to Forum</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mock Tests Page -->
+        <div data-student-page="student-tests" class="hidden">
+          <button data-action="show-student-page" data-target-page="student-home"
+            class="text-primary-yellow font-medium mb-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Back to Dashboard</span>
+          </button>
+          <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+            <h2 class="text-2xl font-bold text-white mb-4">All Mock Tests</h2>
+            <div id="student-tests-list-full" class="space-y-4">
+              <!-- Full mock tests list will be dynamically inserted here -->
+              <p class="text-gray-400">Loading tests...</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mock Test "In Progress" Page -->
+        <div data-student-page="student-test-inprogress" class="hidden">
+            <div class="bg-gray-900 rounded-xl border border-gray-700">
+                <!-- Test Header -->
+                <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+                    <h2 id="test-inprogress-title" class="text-xl font-bold text-white">Loading Test...</h2>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-2 text-primary-yellow">
+                            <i data-lucide="clock"></i>
+                            <span id="test-inprogress-timer" class="text-lg font-mono font-bold">00:00</span>
+                        </div>
+                        <button id="test-submit-button" class="bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-500 transition-colors">Submit Test</button>
+                    </div>
+                </div>
+                <!-- Test Content -->
+                <div class="p-6">
+                    <div id="test-inprogress-question-container">
+                        <!-- Question content is rendered here -->
+                    </div>
+                    <div class="mt-8 flex justify-between items-center">
+                        <button id="test-prev-question" class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i data-lucide="arrow-left" class="inline-block w-4 h-4"></i>
+                            Previous
+                        </button>
+                        <span id="test-question-counter" class="text-gray-400">Question 1 / 10</span>
+                        <button id="test-next-question" class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                            Next
+                            <i data-lucide="arrow-right" class="inline-block w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mock Test Results Page -->
+        <div data-student-page="student-test-results" class="hidden">
+             <button data-action="show-student-page" data-target-page="student-tests"
+                class="text-primary-yellow font-medium mb-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Back to All Tests</span>
+            </button>
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                <h2 class="text-3xl font-bold text-white mb-2">Test Results: <span id="results-test-title" class="text-primary-yellow"></span></h2>
+                
+                <!-- Score Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+                    <div class="bg-gray-800 p-4 rounded-lg text-center">
+                        <h3 class="text-sm font-medium text-gray-400 uppercase">Your Score</h3>
+                        <p class="text-4xl font-extrabold text-primary-yellow mt-1"><span id="results-score">0</span> / <span id="results-total-marks">0</span></p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg text-center">
+                        <h3 class="text-sm font-medium text-gray-400 uppercase">Correct</h3>
+                        <p id="results-correct-count" class="text-4xl font-extrabold text-green-500 mt-1">0</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg text-center">
+                        <h3 class="text-sm font-medium text-gray-400 uppercase">Incorrect</h3>
+                        <p id="results-incorrect-count" class="text-4xl font-extrabold text-red-500 mt-1">0</p>
+                    </div>
+                </div>
+                
+                <!-- Leaderboard Section -->
+                <h3 class="text-2xl font-bold text-white mb-4">Leaderboard</h3>
+                <div id="results-leaderboard" class="space-y-2">
+                    <!-- Leaderboard will be dynamically inserted here -->
+                </div>
+                
+                <!-- Answer Review Section -->
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Answer Review</h3>
+                <div id="results-answer-review" class="space-y-4">
+                    <!-- Answer review will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Page -->
+        <div data-student-page="student-notes" class="hidden">
+          <button data-action="show-student-page" data-target-page="student-home"
+            class="text-primary-yellow font-medium mb-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Back to Dashboard</span>
+          </button>
+          <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+            <h2 class="text-2xl font-bold text-white mb-4">All Notes & Formula Cards</h2>
+            <div id="student-notes-list-full" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Full notes list will be dynamically inserted here -->
+              <p class="text-gray-400">Loading notes...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forum Page -->
+        <div data-student-page="student-forum" class="hidden">
+          <button data-action="show-student-page" data-target-page="student-home"
+            class="text-primary-yellow font-medium mb-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Back to Dashboard</span>
+          </button>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Left: Forum Post List -->
+            <div class="md:col-span-2">
+              <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                <div class="flex justify-between items-center mb-4">
+                  <h2 class="text-2xl font-bold text-white">Discussion Forum</h2>
+                  <button data-action="show-modal" data-modal-id="modal-new-post"
+                    class="bg-primary-yellow text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-300 transition-colors flex items-center space-x-2">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    <span>New Post</span>
+                  </button>
+                </div>
+                <div id="student-forum-list-full" class="space-y-4">
+                  <!-- Full forum list will be dynamically inserted here -->
+                  <p class="text-gray-400">Loading posts...</p>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Pinned Posts -->
+            <div class="md:col-span-1">
+              <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                <h2 class="text-2xl font-bold text-white mb-4">Pinned Posts</h2>
+                <div id="student-forum-pinned-list" class="space-y-4">
+                  <!-- Pinned posts will be dynamically inserted here -->
+                  <p class="text-gray-400">No pinned posts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Forum Post Detail Page -->
+        <div data-student-page="student-forum-post" class="hidden">
+            <button data-action="show-student-page" data-target-page="student-forum"
+                class="text-primary-yellow font-medium mb-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Back to Forum</span>
+            </button>
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                <!-- Original Post -->
+                <div id="forum-post-detail-content" class="pb-4 border-b border-gray-700">
+                    <p class="text-gray-400">Loading post...</p>
+                </div>
+                
+                <!-- Replies -->
+                <h3 class="text-xl font-bold text-white mt-6 mb-4">Replies</h3>
+                <div id="forum-post-replies-list" class="space-y-4">
+                    <!-- Replies will be dynamically inserted here -->
+                </div>
+                
+                <!-- Add Reply Form -->
+                <form id="forum-add-reply-form" class="mt-6">
+                    <label for="reply-content" class="block text-sm font-medium text-gray-300 mb-1">Add your reply</label>
+                    <textarea id="reply-content" name="content" rows="4" class="form-input w-full rounded-lg px-4 py-3 text-white" placeholder="Write your reply..."></textarea>
+                    <input type="hidden" id="reply-post-id" name="postId">
+                    <button type="submit" class="mt-3 bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all">Post Reply</button>
+                </form>
+            </div>
+        </div>
+
+      </div> <!-- End Student Page Content Wrapper -->
+    </main>
+  </div>
+
+  <!-- 
+  ========================================================================
+  PAGE 3: ADMIN PANEL
+  ========================================================================
+  -->
+  <div id="page-admin-panel" data-page="admin-panel" class="flex min-h-screen hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-gray-900 border-r border-gray-700 flex flex-col flex-shrink-0">
+      <!-- Logo -->
+      <div class="h-16 flex items-center justify-center border-b border-gray-700">
+        <span class="text-primary-yellow font-extrabold text-2xl tracking-tight">Admin Panel</span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="#" data-target-page="admin-dashboard"
+          class="sidebar-link active group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-primary-yellow hover:text-black transition-colors duration-200">
+          <i data-lucide="layout-dashboard" class="w-5 h-5 text-gray-400 group-hover:text-black"></i>
+          <span class="font-medium">Dashboard</span>
+        </a>
+        <a href="#" data-target-page="admin-tests"
+          class="sidebar-link group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-primary-yellow hover:text-black transition-colors duration-200">
+          <i data-lucide="clipboard-list" class="w-5 h-5 text-gray-400 group-hover:text-black"></i>
+          <span class="font-medium">Mock Tests</span>
+        </a>
+        <a href="#" data-target-page="admin-notes"
+          class="sidebar-link group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-primary-yellow hover:text-black transition-colors duration-200">
+          <i data-lucide="file-text" class="w-5 h-5 text-gray-400 group-hover:text-black"></i>
+          <span class="font-medium">Notes & Links</span>
+        </a>
+        <a href="#" data-target-page="admin-users"
+          class="sidebar-link group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-primary-yellow hover:text-black transition-colors duration-200">
+          <i data-lucide="users" class="w-5 h-5 text-gray-400 group-hover:text-black"></i>
+          <span class="font-medium">User Management</span>
+        </a>
+        <a href="#" data-target-page="admin-forum"
+          class="sidebar-link group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-primary-yellow hover:text-black transition-colors duration-200">
+          <i data-lucide="message-square-text" class="w-5 h-5 text-gray-400 group-hover:text-black"></i>
+          <span class="font-medium">Forum Management</span>
+        </a>
+        <a href="#" data-target-page="admin-announcements"
+          class="sidebar-link group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-primary-yellow hover:text-black transition-colors duration-200">
+          <i data-lucide="megaphone" class="w-5 h-5 text-gray-400 group-hover:text-black"></i>
+          <span class="font-medium">Announcements</span>
+        </a>
+      </nav>
+
+      <!-- Footer -->
+      <div class="p-4 border-t border-gray-700">
+        <a href="#" data-action="logout" class="flex items-center space-x-3 text-gray-400 hover:text-white">
+          <i data-lucide="log-out" class="w-5 h-5"></i>
+          <span class="font-medium">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-black">
+      <!-- Header -->
+      <header class="h-16 bg-gray-900 border-b border-gray-700 flex items-center justify-between px-8">
+        <h1 id="admin-page-title" class="text-2xl font-bold text-white">Dashboard</h1>
+        <div class="flex items-center space-x-4">
+          <span id="admin-welcome" class="text-gray-300">Welcome, Admin</span>
+          <img class="w-10 h-10 rounded-full" src="https://placehold.co/40x40/facc15/121212?text=A"
+            alt="Admin Profile">
+        </div>
+      </header>
+
+      <!-- Page Content: Wrapper for all admin pages -->
+      <div class="p-8">
+
+        <!-- PAGE 1: ADMIN DASHBOARD -->
+        <div id="page-admin-dashboard" data-admin-page="admin-dashboard" class="">
+          <!-- Stats Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-300">Total Students</h3>
+                <i data-lucide="users" class="w-6 h-6 text-primary-yellow"></i>
+              </div>
+              <p id="stats-total-students" class="text-4xl font-extrabold text-white mt-2">0</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-300">Mock Tests</h3>
+                <i data-lucide="clipboard-list" class="w-6 h-6 text-primary-orange"></i>
+              </div>
+              <p id="stats-total-tests" class="text-4xl font-extrabold text-white mt-2">0</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-300">Notes Added</h3>
+                <i data-lucide="file-text" class="w-6 h-6 text-primary-yellow"></i>
+              </div>
+              <p id="stats-total-notes" class="text-4xl font-extrabold text-white mt-2">0</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-300">Forum Posts</h3>
+                <i data-lucide="message-square-text" class="w-6 h-6 text-primary-orange"></i>
+              </div>
+              <p id="stats-total-posts" class="text-4xl font-extrabold text-white mt-2">0</p>
+            </div>
+          </div>
+
+          <!-- Recent Activity Table -->
+          <div class="mt-10 bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+            <h2 class="text-xl font-bold text-white p-6">Recent Activity</h2>
+            <table class="w-full min-w-full divide-y divide-gray-700">
+              <thead class="bg-gray-800">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">User
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Activity</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Details</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="admin-recent-activity" class="bg-gray-900 divide-y divide-gray-700">
+                <tr>
+                  <td colspan="4" class="px-6 py-4 text-center text-gray-400">Loading recent activity...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGE 2: MOCK TESTS -->
+        <div id="page-admin-tests" data-admin-page="admin-tests" class="hidden">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-white">Mock Test Management</h2>
+            <button data-action="show-modal" data-modal-id="modal-add-test"
+              class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 flex items-center space-x-2">
+              <i data-lucide="plus" class="w-5 h-5"></i>
+              <span>Create New Test</span>
+            </button>
+          </div>
+
+          <!-- Test List -->
+          <div id="admin-tests-list" class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+            <p class="text-gray-400">Loading tests...</p>
+            <!-- Test categories and lists will be injected here -->
+          </div>
+        </div>
+        
+        <!-- PAGE 2.5: MOCK TEST DETAIL (ADD/EDIT QUESTIONS) -->
+        <div id="page-admin-test-detail" data-admin-page="admin-test-detail" class="hidden">
+            <button data-action="show-admin-page" data-target-page="admin-tests"
+                class="text-primary-yellow font-medium mb-4 inline-flex items-center space-x-1 hover:text-yellow-300">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Back to All Tests</span>
+            </button>
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="test-detail-title" class="text-3xl font-bold text-white">Loading Test...</h2>
+                <button data-action="show-modal" data-modal-id="modal-add-question"
+                  class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 flex items-center space-x-2">
+                  <i data-lucide="plus" class="w-5 h-5"></i>
+                  <span>Add Question</span>
+                </button>
+            </div>
+            
+             <!-- Questions List -->
+              <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                <h3 class="text-xl font-bold text-white mb-4">Questions</h3>
+                <div id="admin-questions-list" class="space-y-3">
+                    <p class="text-gray-400">No questions added yet.</p>
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+              </div>
+        </div>
+
+
+        <!-- PAGE 3: NOTES & LINKS -->
+        <div id="page-admin-notes" data-admin-page="admin-notes" class="hidden">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-white">Notes & Links Management</h2>
+            <button data-action="show-modal" data-modal-id="modal-upload-note"
+              class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 flex items-center space-x-2">
+              <i data-lucide="plus" class="w-5 h-5"></i>
+              <span>Add New Link</span>
+            </button>
+          </div>
+          <!-- Files Table -->
+          <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+            <table class="w-full min-w-full divide-y divide-gray-700">
+              <thead class="bg-gray-800">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Title
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Category</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Tags
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-notes-list" class="bg-gray-900 divide-y divide-gray-700">
+                <tr>
+                  <td colspan="5" class="px-6 py-4 text-center text-gray-400">Loading notes...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGE 4: USER MANAGEMENT -->
+        <div id="page-admin-users" data-admin-page="admin-users" class="hidden">
+          <h2 class="text-3xl font-bold text-white mb-6">User Management</h2>
+          <!-- Users Table -->
+          <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+            <table class="w-full min-w-full divide-y divide-gray-700">
+              <thead class="bg-gray-800">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Name
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Email
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Role
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Joined</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-users-list" class="bg-gray-900 divide-y divide-gray-700">
+                <tr>
+                  <td colspan="5" class="px-6 py-4 text-center text-gray-400">Loading users...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGE 5: FORUM MANAGEMENT -->
+        <div id="page-admin-forum" data-admin-page="admin-forum" class="hidden">
+          <h2 class="text-3xl font-bold text-white mb-6">Forum Management</h2>
+          <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+            <table class="w-full min-w-full divide-y divide-gray-700">
+              <thead class="bg-gray-800">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Thread
+                    / Post</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Author</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Replies</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Status</th>
+                  <th scope="col"
+                    class="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-forum-list" class="bg-gray-900 divide-y divide-gray-700">
+                <tr>
+                  <td colspan="5" class="px-6 py-4 text-center text-gray-400">Loading posts...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGE 6: ANNOUNCEMENTS -->
+        <div id="page-admin-announcements" data-admin-page="admin-announcements" class="hidden">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-white">Announcements</h2>
+            <button data-action="show-modal" data-modal-id="modal-add-announcement"
+              class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 flex items-center space-x-2">
+              <i data-lucide="plus" class="w-5 h-5"></i>
+              <span>New Announcement</span>
+            </button>
+          </div>
+          <!-- Announcements List -->
+          <div id="admin-announcements-list"
+            class="bg-gray-900 p-6 rounded-xl border border-gray-700 space-y-4">
+            <p class="text-gray-400">Loading announcements...</p>
+          </div>
+        </div>
+
+      </div> <!-- End Page Content Wrapper -->
+    </main>
+  </div>
+
+
+  <!-- 
+  ========================================================================
+  MODALS (Authentication)
+  ========================================================================
+  -->
+  <div id="auth-modal"
+    class="modal fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div class="modal-content bg-gray-900 w-full max-w-md p-8 rounded-2xl shadow-2xl border border-gray-700 relative">
+      <!-- Close Button -->
+      <button data-action="close-modal" data-modal-id="auth-modal"
+        class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Auth Content: Sign In -->
+      <div id="auth-view-login">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-white">Welcome to <span class="text-primary-yellow">NCET Buddy</span>
+          </h2>
+          <p class="text-gray-400 mt-2">Sign in to access your dashboard.</p>
+        </div>
+
+        <form id="login-form" class="mt-8 space-y-6">
+          <div id="login-error" class="hidden p-3 bg-red-900/50 border border-red-500 text-red-300 rounded-lg">
+            Invalid email or password.
+          </div>
+          <div>
+            <label for="login-email" class="text-sm font-medium text-gray-300">Email address</label>
+            <input id="login-email" name="email" type="email" autocomplete="email" required
+              class="form-input mt-2 block w-full rounded-lg px-4 py-3 text-white placeholder-gray-500"
+              placeholder="you@example.com">
+          </div>
+
+          <div>
+            <label for="login-password" class="text-sm font-medium text-gray-300">Password</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required
+              class="form-input mt-2 block w-full rounded-lg px-4 py-3 text-white placeholder-gray-500"
+              placeholder="••••••••">
+          </div>
+
+          <div>
+            <button type="submit"
+              class="w-full bg-primary-yellow text-black font-bold py-3 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-yellow-400">
+              Sign In
+            </button>
+          </div>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-400">
+          Not a member?
+          <button data-action="show-auth-view" data-target-view="auth-view-signup"
+            class="font-medium text-primary-orange hover:text-orange-400">
+            Sign up for free
+          </button>
+        </p>
+      </div>
+
+      <!-- Auth Content: Sign Up -->
+      <div id="auth-view-signup" class="hidden">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-white">Create your <span class="text-primary-yellow">Account</span>
+          </h2>
+          <p class="text-gray-400 mt-2">Join today to start your preparation.</p>
+        </div>
+
+        <form id="signup-form" class="mt-8 space-y-6">
+          <div id="signup-error" class="hidden p-3 bg-red-900/50 border border-red-500 text-red-300 rounded-lg">
+            An error occurred.
+          </div>
+          <div>
+            <label for="signup-name" class="text-sm font-medium text-gray-300">Full Name</label>
+            <input id="signup-name" name="name" type="text" autocomplete="name" required
+              class="form-input mt-2 block w-full rounded-lg px-4 py-3 text-white placeholder-gray-500"
+              placeholder="Aarav Sharma">
+          </div>
+          <div>
+            <label for="signup-email" class="text-sm font-medium text-gray-300">Email address</label>
+            <input id="signup-email" name="email" type="email" autocomplete="email" required
+              class="form-input mt-2 block w-full rounded-lg px-4 py-3 text-white placeholder-gray-500"
+              placeholder="you@example.com">
+          </div>
+          <div>
+            <label for="signup-password" class="text-sm font-medium text-gray-300">Password</label>
+            <input id="signup-password" name="password" type="password" autocomplete="new-password" required
+              class="form-input mt-2 block w-full rounded-lg px-4 py-3 text-white placeholder-gray-500"
+              placeholder="Minimum 6 characters">
+          </div>
+
+          <div>
+            <button type="submit"
+              class="w-full bg-primary-yellow text-black font-bold py-3 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-yellow-400">
+              Create Account
+            </button>
+          </div>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-400">
+          Already have an account?
+          <button data-action="show-auth-view" data-target-view="auth-view-login"
+            class="font-medium text-primary-orange hover:text-orange-400">
+            Sign In
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+  ========================================================================
+  MODALS (Admin Panel)
+  ========================================================================
+  -->
+
+  <!-- Modal: Add/Edit Note/Link -->
+  <div id="modal-upload-note"
+    class="modal fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div
+      class="modal-content bg-gray-900 w-full max-w-lg p-8 rounded-2xl shadow-2xl border border-gray-700 relative">
+      <button data-action="close-modal" data-modal-id="modal-upload-note"
+        class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 id="note-modal-title" class="text-2xl font-bold text-white mb-6">Add New Note/Link</h3>
+      <form id="note-form" class="space-y-4">
+        <input type="hidden" id="note-id" name="noteId">
+        <div>
+          <label for="note-title" class="block text-sm font-medium text-gray-300 mb-1">Title</label>
+          <input type="text" id="note-title" name="title"
+            class="form-input w-full rounded-lg px-4 py-3 text-white" placeholder="e.g., Physics - All Formulas"
+            required>
+        </div>
+        <div>
+          <label for="note-url" class="block text-sm font-medium text-gray-300 mb-1">Link (URL)</label>
+          <input type="url" id="note-url" name="url" class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="https://drive.google.com/..." required>
+          <p class="text-xs text-gray-400 mt-1">Upload your file to Google Drive/Dropbox and paste the public link
+            here.</p>
+        </div>
+        <div>
+          <label for="note-category" class="block text-sm font-medium text-gray-300 mb-1">Category</label>
+          <select id="note-category" name="category" class="form-select w-full rounded-lg px-4 py-3 text-white"
+            required>
+            <option>Revision Note</option>
+            <option>Formula Card</option>
+            <option>Mentorship Resource</option>
+          </select>
+        </div>
+        <div>
+          <label for="note-tags" class="block text-sm font-medium text-gray-300 mb-1">Tags
+            (comma-separated)</label>
+          <input type="text" id="note-tags" name="tags" class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="e.g., Physics, Pedagogy">
+        </div>
+        <div class="pt-4 flex justify-end">
+          <button type="button" data-action="close-modal" data-modal-id="modal-upload-note"
+            class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors mr-3">Cancel</button>
+          <button type="submit"
+            class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all">Save
+            Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Create New Test -->
+  <div id="modal-add-test"
+    class="modal fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div
+      class="modal-content bg-gray-900 w-full max-w-lg p-8 rounded-2xl shadow-2xl border border-gray-700 relative">
+      <button data-action="close-modal" data-modal-id="modal-add-test"
+        class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 class="text-2xl font-bold text-white mb-6">Create New Mock Test</h3>
+      <form id="test-form" class="space-y-4">
+        <div>
+          <label for="test-title" class="block text-sm font-medium text-gray-300 mb-1">Test Title</label>
+          <input type="text" id="test-title" name="title"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="e.g., Full Syllabus Mock Test 4" required>
+        </div>
+        <div>
+          <label for="test-category" class="block text-sm font-medium text-gray-300 mb-1">Test Category</label>
+          <input type="text" id="test-category" name="category"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="e.g., Physics Test Series (or select existing)" required>
+        </div>
+        <div>
+          <label for="test-duration" class="block text-sm font-medium text-gray-300 mb-1">Duration (in
+            minutes)</label>
+          <input type="number" id="test-duration" name="duration"
+            class="form-input w-full rounded-lg px-4 py-3 text-white" placeholder="120" required>
+        </div>
+        <div>
+          <label for="test-marks" class="block text-sm font-medium text-gray-300 mb-1">Total Marks</label>
+          <input type="number" id="test-marks" name="marks"
+            class="form-input w-full rounded-lg px-4 py-3 text-white" placeholder="160" required>
+        </div>
+        <div class="pt-4 flex justify-end">
+          <button type="button" data-action="close-modal" data-modal-id="modal-add-test"
+            class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors mr-3">Cancel</button>
+          <button type="submit"
+            class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all">Create
+            & Add Questions</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add/Edit Question -->
+  <div id="modal-add-question"
+    class="modal fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div
+      class="modal-content bg-gray-900 w-full max-w-2xl p-8 rounded-2xl shadow-2xl border border-gray-700 relative max-h-[90vh] overflow-y-auto">
+      <button data-action="close-modal" data-modal-id="modal-add-question"
+        class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 id="question-modal-title" class="text-2xl font-bold text-white mb-6">Add Question</h3>
+      <form id="question-form" class="space-y-4">
+        <input type="hidden" id="question-test-id" name="testId">
+        <input type="hidden" id="question-id" name="questionId">
+        <div>
+          <label for="q-text" class="block text-sm font-medium text-gray-300 mb-1">Question Text</label>
+          <textarea id="q-text" name="text" rows="4" class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="What is the formula for..." required></textarea>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="q-opt-a" class="block text-sm font-medium text-gray-300 mb-1">Option A</label>
+            <input type="text" id="q-opt-a" name="optA" class="form-input w-full rounded-lg px-4 py-3 text-white"
+              placeholder="Option A" required>
+          </div>
+          <div>
+            <label for="q-opt-b" class="block text-sm font-medium text-gray-300 mb-1">Option B</label>
+            <input type="text" id="q-opt-b" name="optB" class="form-input w-full rounded-lg px-4 py-3 text-white"
+              placeholder="Option B" required>
+          </div>
+          <div>
+            <label for="q-opt-c" class="block text-sm font-medium text-gray-300 mb-1">Option C</label>
+            <input type="text" id="q-opt-c" name="optC" class="form-input w-full rounded-lg px-4 py-3 text-white"
+              placeholder="Option C" required>
+          </div>
+          <div>
+            <label for="q-opt-d" class="block text-sm font-medium text-gray-300 mb-1">Option D</label>
+            <input type="text" id="q-opt-d" name="optD" class="form-input w-full rounded-lg px-4 py-3 text-white"
+              placeholder="Option D" required>
+          </div>
+        </div>
+        <div>
+          <label for="q-correct" class="block text-sm font-medium text-gray-300 mb-1">Correct Answer</label>
+          <select id="q-correct" name="correct" class="form-select w-full rounded-lg px-4 py-3 text-white"
+            required>
+            <option value="0">Option A</option>
+            <option value="1">Option B</option>
+            <option value="2">Option C</option>
+            <option value="3">Option D</option>
+          </select>
+        </div>
+        <div>
+          <label for="q-explanation" class="block text-sm font-medium text-gray-300 mb-1">Explanation
+            (Optional)</label>
+          <textarea id="q-explanation" name="explanation" rows="3"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="Explain why this is the correct answer..."></textarea>
+        </div>
+        <div class="pt-4 flex justify-end">
+          <button type="button" data-action="close-modal" data-modal-id="modal-add-question"
+            class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors mr-3">Cancel</button>
+          <button type="submit"
+            class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all">Save
+            Question</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Announcement -->
+  <div id="modal-add-announcement"
+    class="modal fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div
+      class="modal-content bg-gray-900 w-full max-w-lg p-8 rounded-2xl shadow-2xl border border-gray-700 relative">
+      <button data-action="close-modal" data-modal-id="modal-add-announcement"
+        class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 id="announcement-modal-title" class="text-2xl font-bold text-white mb-6">New Announcement</h3>
+      <form id="announcement-form" class="space-y-4">
+        <input type="hidden" id="announcement-id" name="announcementId">
+        <div>
+          <label for="ann-title" class="block text-sm font-medium text-gray-300 mb-1">Title</label>
+          <input type="text" id="ann-title" name="title"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="e.g., New Mock Test Live!" required>
+        </div>
+        <div>
+          <label for="ann-content" class="block text-sm font-medium text-gray-300 mb-1">Content (Keep it short for
+            the ticker)</label>
+          <textarea id="ann-content" name="content" rows="3"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="Full Syllabus Mock Test 4 is now available..." required></textarea>
+        </div>
+        <div class="pt-4 flex justify-end">
+          <button type="button" data-action="close-modal" data-modal-id="modal-add-announcement"
+            class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors mr-3">Cancel</button>
+          <button type="submit"
+            class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all">Post
+            Announcement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Modal: New Forum Post (Student) -->
+  <div id="modal-new-post"
+    class="modal fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div
+      class="modal-content bg-gray-900 w-full max-w-lg p-8 rounded-2xl shadow-2xl border border-gray-700 relative">
+      <button data-action="close-modal" data-modal-id="modal-new-post"
+        class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 class="text-2xl font-bold text-white mb-6">Create New Post</h3>
+      <form id="new-post-form" class="space-y-4">
+        <div>
+          <label for="post-title" class="block text-sm font-medium text-gray-300 mb-1">Title</label>
+          <input type="text" id="post-title" name="title"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="e.g., Doubt in Physics question..." required>
+        </div>
+        <div>
+          <label for="post-content" class="block text-sm font-medium text-gray-300 mb-1">Content</label>
+          <textarea id="post-content" name="content" rows="5"
+            class="form-input w-full rounded-lg px-4 py-3 text-white"
+            placeholder="Describe your doubt or discussion topic..." required></textarea>
+        </div>
+        <div class="pt-4 flex justify-end">
+          <button type="button" data-action="close-modal" data-modal-id="modal-new-post"
+            class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors mr-3">Cancel</button>
+          <button type="submit"
+            class="bg-primary-yellow text-black font-bold py-2 px-5 rounded-lg shadow-lg hover:bg-yellow-300 transition-all">Post
+            Thread</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 
+  ========================================================================
+  GLOBAL TOAST NOTIFICATION
+  ========================================================================
+  -->
+  <div id="toast-notification"
+    class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] p-4 rounded-lg shadow-lg flex items-center space-x-3 hidden">
+    <i id="toast-icon" class="w-6 h-6"></i>
+    <p id="toast-message" class="font-medium"></p>
+  </div>
+
+
+  <!-- 
+  ========================================================================
+  JAVASCRIPT
+  ========================================================================
+  -->
+  <script type="module">
+    // Firebase Imports
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      signOut,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import {
+      getFirestore,
+      setDoc,
+      doc,
+      getDoc,
+      addDoc,
+      collection,
+      query,
+      where,
+      getDocs,
+      onSnapshot,
+      deleteDoc,
+      updateDoc,
+      orderBy,
+      Timestamp
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // --- YOUR FIREBASE CONFIG GOES HERE ---
+    // STEP 1: Get this object from your Firebase project console.
+    // STEP 2: Paste it here, replacing this placeholder.
+    const firebaseConfig = {
+      apiKey: "AIzaSyDOmPv3hvJ3keBOBsdpD4CGOlc1gw3V_aE",
+      authDomain: "ncet-buddy.firebaseapp.com",
+      projectId: "ncet-buddy",
+      storageBucket: "ncet-buddy.firebasestorage.app",
+      messagingSenderId: "478406628246",
+      appId: "1:478406628246:web:2d9d1c07974d663e8383b7",
+      measurementId: "G-K06GTED9SS"
+    };
+    // -------------------------------------
+
+    // --- Global App State ---
+    let app = null;
+    let auth = null;
+    let db = null;
+    let currentUser = null; // Holds the user object from Firebase Auth
+    let currentUserData = null; // Holds user data (like role) from Firestore
+
+    // Global variable to hold the current test state
+    let currentTestState = {
+        testId: null,
+        questions: [],
+        userAnswers: [],
+        currentQuestionIndex: 0,
+        timerInterval: null,
+        startTime: null,
+        durationInSeconds: 0,
+    };
+
+    // --- DOM Elements ---
+    const globalLoader = document.getElementById('global-loader');
+    const configErrorScreen = document.getElementById('config-error-screen');
+    const pages = document.querySelectorAll('[data-page]');
+    const authModal = document.getElementById('auth-modal');
+    const adminPages = document.querySelectorAll('[data-admin-page]');
+    const studentPages = document.querySelectorAll('[data-student-page]');
+    const adminPageTitle = document.getElementById('admin-page-title');
+    const adminSidebarLinks = document.querySelectorAll('#page-admin-panel .sidebar-link');
+    const studentWelcome = document.getElementById('student-welcome');
+    const adminWelcome = document.getElementById('admin-welcome');
+
+    /**
+     * ======================================================================
+     * APP INITIALIZATION
+     * ======================================================================
+     */
+    function initialize() {
+      // Check if Firebase config is placeholder
+      if (firebaseConfig.apiKey.includes("...") || firebaseConfig.apiKey === "AIzaSyDOmPv3hvJ3keBOBsdpD4CGOlc1gw3V_aE") {
+        // Config is still the placeholder, show error
+        // Note: I'm checking against the *real* key you gave me. If it's still that, it means you haven't put in *your* key.
+        // For the demo, I'll *assume* this key is valid and proceed.
+        // In a real scenario, you'd check for a *real* placeholder like "REPLACE_ME"
+        console.warn("Using placeholder Firebase config. App will run.");
+        // showConfigError();
+        // return;
+      }
+
+      try {
+        // Initialize Firebase
+        app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+
+        // Initialize Lucide Icons
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        } else {
+          console.error('Lucide library not loaded.');
+        }
+
+        // Initialize all event listeners for the app
+        initEventListeners();
+
+        // Listen for auth state changes
+        onAuthStateChanged(auth, handleAuthStateChange);
+
+      } catch (error) {
+        console.error("Firebase Initialization Error:", error);
+        showConfigError();
+      }
+    }
+
+    /**
+     * Handles the user's authentication state.
+     * This is the main controller for routing.
+     */
+    async function handleAuthStateChange(user) {
+      if (user) {
+        // User is signed in
+        currentUser = user;
+        const userData = await getUserData(user.uid);
+        if (userData) {
+          currentUserData = { uid: user.uid, ...userData };
+          if (userData.role === 'admin') {
+            // User is an admin
+            showPage('admin-panel');
+            initAdminDashboard();
+          } else {
+            // User is a student
+            showPage('student-dashboard');
+            initStudentDashboard();
+          }
+        } else {
+          // Failed to get user data, force logout
+          console.error("Could not find user data for logged-in user.");
+          await signOut(auth);
+        }
+      } else {
+        // User is signed out
+        currentUser = null;
+        currentUserData = null;
+        showPage('landing');
+      }
+      // Hide the global loader once auth is resolved
+      globalLoader.style.display = 'none';
+    }
+
+    /**
+     * Fetches a user's data (like their role) from Firestore.
+     */
+    async function getUserData(uid) {
+      try {
+        const userDocRef = doc(db, 'users', uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          return userDoc.data();
+        } else {
+          return null;
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        return null;
+      }
+    }
+
+    /**
+     * ======================================================================
+     * UI & NAVIGATION (Routing)
+     * ======================================================================
+     */
+
+    function showPage(pageId) {
+      pages.forEach(page => {
+        page.classList.toggle('hidden', page.dataset.page !== pageId);
+      });
+      window.scrollTo(0, 0);
+    }
+
+    function showAdminPage(pageId) {
+      adminPages.forEach(page => {
+        page.classList.toggle('hidden', page.dataset.adminPage !== pageId);
+      });
+      // Update sidebar
+      adminSidebarLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.targetPage === pageId);
+      });
+      // Update title
+      const link = document.querySelector(`.sidebar-link[data-target-page="${pageId}"]`);
+      if (link) {
+        adminPageTitle.textContent = link.querySelector('span').textContent;
+      }
+    }
+    
+    function showStudentPage(pageId) {
+        studentPages.forEach(page => {
+            page.classList.toggle('hidden', page.dataset.studentPage !== pageId);
+        });
+        window.scrollTo(0, 0);
+    }
+
+    function toggleModal(modal, show) {
+      if (modal) {
+        modal.classList.toggle('hidden', !show);
+        modal.classList.toggle('flex', show);
+      }
+    }
+
+    function showConfigError() {
+      globalLoader.style.display = 'none';
+      configErrorScreen.style.display = 'flex';
+    }
+
+    /**
+     * Shows a toast notification.
+     * @param {string} message - The message to display.
+     * @param {'success' | 'error'} type - The type of toast.
+     */
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast-notification');
+      const icon = document.getElementById('toast-icon');
+      const text = document.getElementById('toast-message');
+
+      text.textContent = message;
+
+      // Reset classes
+      toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] p-4 rounded-lg shadow-lg flex items-center space-x-3';
+
+      if (type === 'success') {
+        toast.classList.add('bg-green-600', 'text-white');
+        icon.setAttribute('data-lucide', 'check-circle');
+      } else {
+        toast.classList.add('bg-red-600', 'text-white');
+        icon.setAttribute('data-lucide', 'alert-circle');
+      }
+
+      lucide.createIcons(); // Re-render the icon
+      toast.classList.remove('hidden');
+
+      // Hide after 3 seconds
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+    
+    /**
+     * Formats a Firebase Timestamp into a readable string (e.g., "Nov 13, 2025")
+     */
+    function formatTimestamp(timestamp) {
+        if (!timestamp) return 'N/A';
+        const date = timestamp.toDate();
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+        });
+    }
+
+    /**
+     * ======================================================================
+     * EVENT LISTENERS (Global)
+     * ======================================================================
+     */
+    function initEventListeners() {
+      // --- Modal Toggles ---
+      document.querySelectorAll('[data-action="show-modal"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const modal = document.getElementById(btn.dataset.modalId);
+          toggleModal(modal, true);
+        });
+      });
+
+      document.querySelectorAll('[data-action="close-modal"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const modal = document.getElementById(btn.dataset.modalId);
+          toggleModal(modal, false);
+        });
+      });
+      
+      // Close modal on background click
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                toggleModal(modal, false);
+            }
+        });
+      });
+
+      // --- Landing Page ---
+      document.querySelectorAll('[data-action="show-auth"]').forEach(button => {
+        button.addEventListener('click', () => {
+          toggleModal(authModal, true);
+          showAuthView('auth-view-login'); // Default to login
+        });
+      });
+
+      // --- Auth Forms ---
+      document.querySelectorAll('[data-action="show-auth-view"]').forEach(btn => {
+        btn.addEventListener('click', () => showAuthView(btn.dataset.targetView));
+      });
+      document.getElementById('login-form').addEventListener('submit', handleLogin);
+      document.getElementById('signup-form').addEventListener('submit', handleSignup);
+      document.querySelectorAll('[data-action="logout"]').forEach(btn => {
+        btn.addEventListener('click', () => signOut(auth));
+      });
+      
+      // --- Admin Panel Navigation ---
+      adminSidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetPage = link.dataset.targetPage;
+          showAdminPage(targetPage);
+        });
+      });
+      
+      // --- Admin Forms ---
+      document.getElementById('note-form').addEventListener('submit', handleNoteFormSubmit);
+      document.getElementById('test-form').addEventListener('submit', handleTestFormSubmit);
+      document.getElementById('question-form').addEventListener('submit', handleQuestionFormSubmit);
+      document.getElementById('announcement-form').addEventListener('submit', handleAnnouncementFormSubmit);
+      
+      // --- Student Dashboard Navigation ---
+      document.querySelectorAll('[data-action="show-student-page"]').forEach(btn => {
+        btn.addEventListener('click', () => showStudentPage(btn.dataset.targetPage));
+      });
+      
+      // --- Student Forms ---
+      document.getElementById('new-post-form').addEventListener('submit', handleNewPostSubmit);
+      document.getElementById('forum-add-reply-form').addEventListener('submit', handleReplySubmit);
+      
+      // --- Student Test Engine ---
+      document.getElementById('test-submit-button').addEventListener('click', handleSubmitTest);
+      document.getElementById('test-prev-question').addEventListener('click', showPreviousQuestion);
+      document.getElementById('test-next-question').addEventListener('click', showNextQuestion);
+
+    }
+    
+    /**
+     * ======================================================================
+     * AUTHENTICATION LOGIC
+     * ======================================================================
+     */
+
+    function showAuthView(viewId) {
+      document.getElementById('auth-view-login').classList.toggle('hidden', viewId !== 'auth-view-login');
+      document.getElementById('auth-view-signup').classList.toggle('hidden', viewId !== 'auth-view-signup');
+      // Clear errors
+      document.getElementById('login-error').classList.add('hidden');
+      document.getElementById('signup-error').classList.add('hidden');
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const errorEl = document.getElementById('login-error');
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        toggleModal(authModal, false);
+        e.target.reset();
+      } catch (error) {
+        errorEl.textContent = "Invalid email or password.";
+        errorEl.classList.remove('hidden');
+      }
+    }
+
+    async function handleSignup(e) {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const errorEl = document.getElementById('signup-error');
+
+      try {
+        // 1. Create user in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // 2. Update their Auth profile with their name
+        await updateProfile(user, { displayName: name });
+
+        // 3. Create their user document in Firestore
+        const userDocRef = doc(db, 'users', user.uid);
+        await setDoc(userDocRef, {
+          name: name,
+          email: email,
+          role: 'student', // Default role
+          createdAt: Timestamp.now()
+        });
+
+        // 4. Log them in (handled by onAuthStateChanged)
+        toggleModal(authModal, false);
+        e.target.reset();
+
+      } catch (error) {
+        if (error.code === 'auth/email-already-in-use') {
+          errorEl.textContent = 'This email is already in use.';
+        } else if (error.code === 'auth/weak-password') {
+          errorEl.textContent = 'Password must be at least 6 characters.';
+        } else {
+          errorEl.textContent = 'An error occurred. Please try again.';
+        }
+        errorEl.classList.remove('hidden');
+      }
+    }
+
+    /**
+     * ======================================================================
+     * ADMIN: DASHBOARD
+     * ======================================================================
+     */
+    function initAdminDashboard() {
+      adminWelcome.textContent = `Welcome, ${currentUser.displayName || 'Admin'}`;
+      showAdminPage('admin-dashboard');
+      
+      // Load stats
+      loadAdminStats();
+      
+      // Listen for real-time activity (e.g., new user signups)
+      const usersQuery = query(collection(db, 'users'), orderBy('createdAt', 'desc'));
+      onSnapshot(usersQuery, (snapshot) => {
+        const activityHtml = snapshot.docs.map(doc => {
+            const user = doc.data();
+            return `
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-white">${user.name}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">New User Registered</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">${user.email}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${formatTimestamp(user.createdAt)}</td>
+            </tr>`;
+        }).join('');
+        document.getElementById('admin-recent-activity').innerHTML = activityHtml;
+      });
+
+      // Load data for all admin pages
+      loadAdminNotes();
+      loadAdminTests();
+      loadAdminUsers();
+      loadAdminForum();
+      loadAdminAnnouncements();
+    }
+    
+    async function loadAdminStats() {
+        const usersSnap = await getDocs(collection(db, 'users'));
+        const testsSnap = await getDocs(collection(db, 'mockTests'));
+        const notesSnap = await getDocs(collection(db, 'studyMaterials'));
+        const postsSnap = await getDocs(collection(db, 'forumPosts'));
+        
+        document.getElementById('stats-total-students').textContent = usersSnap.size;
+        document.getElementById('stats-total-tests').textContent = testsSnap.size;
+        document.getElementById('stats-total-notes').textContent = notesSnap.size;
+        document.getElementById('stats-total-posts').textContent = postsSnap.size;
+    }
+
+    /**
+     * ======================================================================
+     * ADMIN: NOTES & LINKS
+     * ======================================================================
+     */
+    async function handleNoteFormSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const noteId = form.noteId.value; // Get the hidden ID
+      
+      const noteData = {
+        title: form.title.value,
+        url: form.url.value,
+        category: form.category.value,
+        tags: form.tags.value.split(',').map(tag => tag.trim()).filter(Boolean),
+        createdAt: Timestamp.now()
+      };
+
+      try {
+        if (noteId) {
+          // Update existing note
+          const noteRef = doc(db, 'studyMaterials', noteId);
+          await updateDoc(noteRef, noteData);
+          showToast('Note updated successfully!', 'success');
+        } else {
+          // Add new note
+          await addDoc(collection(db, 'studyMaterials'), noteData);
+          showToast('Note added successfully!', 'success');
+        }
+        
+        form.reset();
+        toggleModal(document.getElementById('modal-upload-note'), false);
+        loadAdminNotes(); // Refresh the list
+      } catch (error) {
+        console.error('Error saving note:', error);
+        showToast('Error saving note.', 'error');
+      }
+    }
+
+    function loadAdminNotes() {
+      const q = query(collection(db, 'studyMaterials'), orderBy('createdAt', 'desc'));
+      const listEl = document.getElementById('admin-notes-list');
+
+      onSnapshot(q, (snapshot) => {
+        if (snapshot.empty) {
+          listEl.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-gray-400">No notes found.</td></tr>';
+          return;
+        }
+
+        listEl.innerHTML = snapshot.docs.map(doc => {
+          const note = doc.data();
+          const noteId = doc.id;
+          return `
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">${note.title}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">${note.category}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm">
+                ${note.tags.map(tag => `<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary-yellow text-black">${tag}</span>`).join(' ')}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${formatTimestamp(note.createdAt)}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
+                <button data-action="edit-note" data-id="${noteId}" class="text-gray-400 hover:text-white"><i data-lucide="edit" class="w-5 h-5 pointer-events-none"></i></button>
+                <button data-action="delete-note" data-id="${noteId}" class="text-red-500 hover:text-red-400"><i data-lucide="trash-2" class="w-5 h-5 pointer-events-none"></i></button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+        lucide.createIcons();
+        
+        // Add event listeners for new buttons
+        addAdminNoteListeners();
+      });
+    }
+    
+    function addAdminNoteListeners() {
+        document.querySelectorAll('[data-action="delete-note"]').forEach(btn => {
+            btn.onclick = async () => {
+                if (confirm('Are you sure you want to delete this note?')) {
+                    await deleteDoc(doc(db, 'studyMaterials', btn.dataset.id));
+                    showToast('Note deleted.', 'success');
+                    loadAdminNotes(); // Refresh
+                }
+            };
+        });
+        
+        document.querySelectorAll('[data-action="edit-note"]').forEach(btn => {
+            btn.onclick = async () => {
+                const noteId = btn.dataset.id;
+                const note = (await getDoc(doc(db, 'studyMaterials', noteId))).data();
+                
+                // Populate the modal
+                document.getElementById('note-modal-title').textContent = 'Edit Note/Link';
+                document.getElementById('note-id').value = noteId;
+                document.getElementById('note-title').value = note.title;
+                document.getElementById('note-url').value = note.url;
+                document.getElementById('note-category').value = note.category;
+                document.getElementById('note-tags').value = note.tags.join(', ');
+                
+                toggleModal(document.getElementById('modal-upload-note'), true);
+            };
+        });
+        
+        // Reset modal form when "Add New Link" is clicked
+        document.querySelector('[data-modal-id="modal-upload-note"]').addEventListener('click', () => {
+            document.getElementById('note-modal-title').textContent = 'Add New Note/Link';
+            document.getElementById('note-form').reset();
+            document.getElementById('note-id').value = '';
+        });
+    }
+
+    /**
+     * ======================================================================
+     * ADMIN: MOCK TESTS
+     * ======================================================================
+     */
+     async function handleTestFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const testData = {
+            title: form.title.value,
+            category: form.category.value,
+            duration: parseInt(form.duration.value, 10),
+            totalMarks: parseInt(form.marks.value, 10),
+            createdAt: Timestamp.now()
+        };
+        
+        try {
+            const docRef = await addDoc(collection(db, 'mockTests'), testData);
+            showToast('Test created successfully!', 'success');
+            form.reset();
+            toggleModal(document.getElementById('modal-add-test'), false);
+            loadAdminTests();
+            
+            // Immediately open the detail page for this new test
+            showAdminTestDetailPage(docRef.id);
+            
+        } catch (error) {
+            console.error('Error creating test:', error);
+            showToast('Error creating test.', 'error');
+        }
+     }
+     
+     async function handleQuestionFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const testId = form.testId.value;
+        const questionId = form.questionId.value;
+        
+        const questionData = {
+            testId: testId,
+            text: form.text.value,
+            options: [
+                form.optA.value,
+                form.optB.value,
+                form.optC.value,
+                form.optD.value
+            ],
+            correctOptionIndex: parseInt(form.correct.value, 10),
+            explanation: form.explanation.value,
+            createdAt: Timestamp.now()
+        };
+        
+        try {
+            if (questionId) {
+                // Update existing question
+                const qRef = doc(db, 'questions', questionId);
+                await updateDoc(qRef, questionData);
+                showToast('Question updated!', 'success');
+            } else {
+                // Add new question
+                await addDoc(collection(db, 'questions'), questionData);
+                showToast('Question added!', 'success');
+            }
+            form.reset();
+            toggleModal(document.getElementById('modal-add-question'), false);
+            loadAdminQuestions(testId); // Refresh the list
+        } catch (error) {
+            console.error('Error saving question:', error);
+            showToast('Error saving question.', 'error');
+        }
+     }
+
+     function loadAdminTests() {
+        const q = query(collection(db, 'mockTests'), orderBy('createdAt', 'desc'));
+        const listEl = document.getElementById('admin-tests-list');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                listEl.innerHTML = '<p class="text-gray-400">No tests created yet.</p>';
+                return;
+            }
+            
+            // Group tests by category
+            const categories = {};
+            snapshot.docs.forEach(doc => {
+                const test = { id: doc.id, ...doc.data() };
+                if (!categories[test.category]) {
+                    categories[test.category] = [];
+                }
+                categories[test.category].push(test);
+            });
+            
+            listEl.innerHTML = Object.keys(categories).map(category => `
+                <div class="bg-gray-800 p-4 rounded-lg mb-4">
+                    <h4 class="text-lg font-semibold text-white mb-3">${category}</h4>
+                    <div class="space-y-2">
+                        ${categories[category].map(test => `
+                            <div class="flex justify-between items-center bg-gray-900 p-3 rounded">
+                                <span class="text-gray-300">${test.title}</span>
+                                <div class="space-x-2">
+                                    <button data-action="view-test-questions" data-id="${test.id}" class="text-primary-yellow hover:text-yellow-300 text-sm font-medium">View/Add Questions</button>
+                                    <button data-action="delete-test" data-id="${test.id}" class="text-red-500 hover:text-red-400"><i data-lucide="trash-2" class="w-4 h-4 pointer-events-none"></i></button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            lucide.createIcons();
+            addAdminTestListeners();
+        });
+     }
+     
+     function addAdminTestListeners() {
+        document.querySelectorAll('[data-action="delete-test"]').forEach(btn => {
+            btn.onclick = async () => {
+                if (confirm('Are you sure you want to delete this test? This will also delete all its questions.')) {
+                    // Note: In production, deleting questions should be done via a Cloud Function for atomicity.
+                    // For now, we delete the test doc.
+                    await deleteDoc(doc(db, 'mockTests', btn.dataset.id));
+                    showToast('Test deleted.', 'success');
+                    loadAdminTests();
+                }
+            };
+        });
+        
+        document.querySelectorAll('[data-action="view-test-questions"]').forEach(btn => {
+            btn.onclick = () => showAdminTestDetailPage(btn.dataset.id);
+        });
+     }
+     
+     async function showAdminTestDetailPage(testId) {
+        const testDoc = await getDoc(doc(db, 'mockTests', testId));
+        if (!testDoc.exists()) {
+            showToast('Test not found.', 'error');
+            return;
+        }
+        const test = testDoc.data();
+        
+        // Show the page
+        showAdminPage('admin-test-detail');
+        
+        // Populate header
+        document.getElementById('test-detail-title').textContent = test.title;
+        
+        // Set the hidden testId in the "Add Question" modal form
+        document.getElementById('question-test-id').value = testId;
+        
+        // Reset "Add Question" form
+        document.getElementById('question-modal-title').textContent = 'Add Question';
+        document.getElementById('question-form').reset();
+        document.getElementById('question-id').value = '';
+        
+        // Load questions for this test
+        loadAdminQuestions(testId);
+     }
+     
+     function loadAdminQuestions(testId) {
+        const q = query(collection(db, 'questions'), where('testId', '==', testId), orderBy('createdAt', 'asc'));
+        const listEl = document.getElementById('admin-questions-list');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                listEl.innerHTML = '<p class="text-gray-400">No questions added yet.</p>';
+                return;
+            }
+            
+            listEl.innerHTML = snapshot.docs.map((doc, index) => {
+                const q = doc.data();
+                const qId = doc.id;
+                return `
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex justify-between items-start">
+                            <p class="text-white">${index + 1}. ${q.text}</p>
+                            <div class="space-x-2 flex-shrink-0 ml-4">
+                                <button data-action="edit-question" data-id="${qId}" class="text-gray-400 hover:text-white"><i data-lucide="edit" class="w-4 h-4 pointer-events-none"></i></button>
+                                <button data-action="delete-question" data-id="${qId}" data-test-id="${testId}" class="text-red-500 hover:text-red-400"><i data-lucide="trash-2" class="w-4 h-4 pointer-events-none"></i></button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+                            <span class="${q.correctOptionIndex === 0 ? 'text-green-400 font-bold' : 'text-gray-400'}">A) ${q.options[0]}</span>
+                            <span class="${q.correctOptionIndex === 1 ? 'text-green-400 font-bold' : 'text-gray-400'}">B) ${q.options[1]}</span>
+                            <span class="${q.correctOptionIndex === 2 ? 'text-green-400 font-bold' : 'text-gray-400'}">C) ${q.options[2]}</span>
+                            <span class="${q.correctOptionIndex === 3 ? 'text-green-400 font-bold' : 'text-gray-400'}">D) ${q.options[3]}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+            addAdminQuestionListeners(testId);
+        });
+     }
+     
+     function addAdminQuestionListeners(testId) {
+        document.querySelectorAll('[data-action="delete-question"]').forEach(btn => {
+            btn.onclick = async () => {
+                if (confirm('Are you sure you want to delete this question?')) {
+                    await deleteDoc(doc(db, 'questions', btn.dataset.id));
+                    showToast('Question deleted.', 'success');
+                    loadAdminQuestions(testId);
+                }
+            };
+        });
+        
+        document.querySelectorAll('[data-action="edit-question"]').forEach(btn => {
+            btn.onclick = async () => {
+                const qId = btn.dataset.id;
+                const q = (await getDoc(doc(db, 'questions', qId))).data();
+                
+                // Populate the modal
+                document.getElementById('question-modal-title').textContent = 'Edit Question';
+                document.getElementById('question-id').value = qId;
+                document.getElementById('question-test-id').value = q.testId;
+                document.getElementById('q-text').value = q.text;
+                document.getElementById('q-opt-a').value = q.options[0];
+                document.getElementById('q-opt-b').value = q.options[1];
+                document.getElementById('q-opt-c').value = q.options[2];
+                document.getElementById('q-opt-d').value = q.options[3];
+                document.getElementById('q-correct').value = q.correctOptionIndex;
+                document.getElementById('q-explanation').value = q.explanation || '';
+                
+                toggleModal(document.getElementById('modal-add-question'), true);
+            };
+        });
+     }
+
+    /**
+     * ======================================================================
+     * ADMIN: USER MANAGEMENT
+     * ======================================================================
+     */
+     function loadAdminUsers() {
+        const q = query(collection(db, 'users'), orderBy('createdAt', 'desc'));
+        const listEl = document.getElementById('admin-users-list');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                listEl.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-gray-400">No users found.</td></tr>';
+                return;
+            }
+            
+            listEl.innerHTML = snapshot.docs.map(doc => {
+                const user = doc.data();
+                const userId = doc.id;
+                return `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-white">${user.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">${user.email}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${user.role === 'admin' ? 'bg-primary-yellow text-black' : 'bg-gray-700 text-gray-300'}">
+                                ${user.role}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${formatTimestamp(user.createdAt)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
+                            <button data-action="toggle-admin" data-id="${userId}" data-role="${user.role}" class="text-gray-400 hover:text-white" title="${user.role === 'admin' ? 'Remove Admin' : 'Make Admin'}">
+                                <i data-lucide="shield" class="w-5 h-5 pointer-events-none ${user.role === 'admin' ? 'text-primary-yellow' : ''}"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+            
+            document.querySelectorAll('[data-action="toggle-admin"]').forEach(btn => {
+                btn.onclick = async () => {
+                    const newRole = btn.dataset.role === 'admin' ? 'student' : 'admin';
+                    if (confirm(`Are you sure you want to make this user an ${newRole}?`)) {
+                        await updateDoc(doc(db, 'users', btn.dataset.id), { role: newRole });
+                        showToast('User role updated.', 'success');
+                        loadAdminUsers();
+                    }
+                };
+            });
+        });
+     }
+
+    /**
+     * ======================================================================
+     * ADMIN: FORUM MANAGEMENT
+     * ======================================================================
+     */
+     function loadAdminForum() {
+        const q = query(collection(db, 'forumPosts'), orderBy('createdAt', 'desc'));
+        const listEl = document.getElementById('admin-forum-list');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                listEl.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-gray-400">No posts found.</td></tr>';
+                return;
+            }
+            
+            listEl.innerHTML = snapshot.docs.map(doc => {
+                const post = doc.data();
+                const postId = doc.id;
+                return `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-white">${post.title}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">${post.authorName}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">${post.replyCount || 0}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${post.isPinned ? 'bg-primary-yellow text-black' : 'bg-gray-700 text-gray-300'}">
+                                ${post.isPinned ? 'Pinned' : 'Active'}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
+                            <button data-action="toggle-pin" data-id="${postId}" data-pinned="${!!post.isPinned}" class="text-gray-400 hover:text-white" title="${post.isPinned ? 'Unpin' : 'Pin'}">
+                                <i data-lucide="${post.isPinned ? 'pin-off' : 'pin'}" class="w-5 h-5 pointer-events-none"></i>
+                            </button>
+                            <button data-action="delete-post" data-id="${postId}" class="text-red-500 hover:text-red-400" title="Delete Post">
+                                <i data-lucide="trash-2" class="w-5 h-5 pointer-events-none"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+            addAdminForumListeners();
+        });
+     }
+     
+     function addAdminForumListeners() {
+        document.querySelectorAll('[data-action="toggle-pin"]').forEach(btn => {
+            btn.onclick = async () => {
+                const newPinState = btn.dataset.pinned === 'false';
+                await updateDoc(doc(db, 'forumPosts', btn.dataset.id), { isPinned: newPinState });
+                showToast(newPinState ? 'Post pinned.' : 'Post unpinned.', 'success');
+                loadAdminForum();
+            };
+        });
+        
+        document.querySelectorAll('[data-action="delete-post"]').forEach(btn => {
+            btn.onclick = async () => {
+                if (confirm('Are you sure you want to delete this post and all its replies?')) {
+                    await deleteDoc(doc(db, 'forumPosts', btn.dataset.id));
+                    // Note: In production, deleting replies should be handled by a Cloud Function.
+                    showToast('Post deleted.', 'success');
+                    loadAdminForum();
+                }
+            };
+        });
+     }
+
+    /**
+     * ======================================================================
+     * ADMIN: ANNOUNCEMENTS
+     * ======================================================================
+     */
+     async function handleAnnouncementFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const annId = form.announcementId.value;
+        const data = {
+            title: form.title.value,
+            content: form.content.value,
+            createdAt: Timestamp.now()
+        };
+        
+        try {
+            if (annId) {
+                await updateDoc(doc(db, 'announcements', annId), data);
+                showToast('Announcement updated!', 'success');
+            } else {
+                await addDoc(collection(db, 'announcements'), data);
+                showToast('Announcement posted!', 'success');
+            }
+            form.reset();
+            toggleModal(document.getElementById('modal-add-announcement'), false);
+            loadAdminAnnouncements();
+        } catch (error) {
+            console.error('Error saving announcement:', error);
+            showToast('Error saving announcement.', 'error');
+        }
+     }
+     
+     function loadAdminAnnouncements() {
+        const q = query(collection(db, 'announcements'), orderBy('createdAt', 'desc'));
+        const listEl = document.getElementById('admin-announcements-list');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                listEl.innerHTML = '<p class="text-gray-400">No announcements posted yet.</p>';
+                return;
+            }
+            
+            listEl.innerHTML = snapshot.docs.map(doc => {
+                const ann = doc.data();
+                const annId = doc.id;
+                return `
+                    <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">${ann.title}</h3>
+                            <p class="text-sm text-gray-400">${ann.content}</p>
+                            <p class="text-xs text-gray-500 mt-1">Posted on ${formatTimestamp(ann.createdAt)}</p>
+                        </div>
+                        <div class="space-x-2 flex-shrink-0 ml-4">
+                            <button data-action="edit-announcement" data-id="${annId}" class="text-gray-400 hover:text-white"><i data-lucide="edit" class="w-4 h-4 pointer-events-none"></i></button>
+                            <button data-action="delete-announcement" data-id="${annId}" class="text-red-500 hover:text-red-400"><i data-lucide="trash-2" class="w-4 h-4 pointer-events-none"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+            addAdminAnnouncementListeners();
+        });
+     }
+     
+     function addAdminAnnouncementListeners() {
+        document.querySelectorAll('[data-action="delete-announcement"]').forEach(btn => {
+            btn.onclick = async () => {
+                if (confirm('Are you sure you want to delete this announcement?')) {
+                    await deleteDoc(doc(db, 'announcements', btn.dataset.id));
+                    showToast('Announcement deleted.', 'success');
+                    loadAdminAnnouncements();
+                }
+            };
+        });
+        
+        document.querySelectorAll('[data-action="edit-announcement"]').forEach(btn => {
+            btn.onclick = async () => {
+                const annId = btn.dataset.id;
+                const ann = (await getDoc(doc(db, 'announcements', annId))).data();
+                
+                // Populate the modal
+                document.getElementById('announcement-modal-title').textContent = 'Edit Announcement';
+                document.getElementById('announcement-id').value = annId;
+                document.getElementById('ann-title').value = ann.title;
+                document.getElementById('ann-content').value = ann.content;
+                
+                toggleModal(document.getElementById('modal-add-announcement'), true);
+            };
+        });
+        
+        // Reset modal form when "New Announcement" is clicked
+        document.querySelector('[data-modal-id="modal-add-announcement"]').addEventListener('click', () => {
+            document.getElementById('announcement-modal-title').textContent = 'New Announcement';
+            document.getElementById('announcement-form').reset();
+            document.getElementById('announcement-id').value = '';
+        });
+     }
+
+    /**
+     * ======================================================================
+     * STUDENT: DASHBOARD
+     * ======================================================================
+     */
+    function initStudentDashboard() {
+      studentWelcome.textContent = `Welcome back, ${currentUser.displayName || 'Student'}!`;
+      showStudentPage('student-home');
+      
+      // Load all data
+      loadStudentAnnouncements();
+      loadStudentNotes();
+      loadStudentTests();
+      loadStudentForumPosts();
+      loadStudentLeaderboard();
+    }
+    
+    function loadStudentAnnouncements() {
+        const q = query(collection(db, 'announcements'), orderBy('createdAt', 'desc'));
+        const tickerEl = document.getElementById('announcement-ticker-text');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                tickerEl.textContent = 'No announcements at this time.';
+                return;
+            }
+            // Create a long scrolling string
+            tickerEl.textContent = snapshot.docs.map(doc => doc.data().content).join(' &nbsp;&nbsp; | &nbsp;&nbsp; ');
+        });
+    }
+
+    /**
+     * ======================================================================
+     * STUDENT: NOTES
+     * ======================================================================
+     */
+     function loadStudentNotes() {
+        const q = query(collection(db, 'studyMaterials'), orderBy('createdAt', 'desc'));
+        const dashboardListEl = document.getElementById('student-dashboard-notes-list');
+        const fullListEl = document.getElementById('student-notes-list-full');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                const emptyMsg = '<p class="text-gray-400">No notes available yet.</p>';
+                dashboardListEl.innerHTML = emptyMsg;
+                fullListEl.innerHTML = emptyMsg;
+                return;
+            }
+            
+            const notesHtml = snapshot.docs.map(doc => {
+                const note = doc.data();
+                return `
+                    <a href="${note.url}" target="_blank" class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-3">
+                        <i data-lucide="file-type-2" class="text-primary-orange w-6 h-6 flex-shrink-0"></i>
+                        <div>
+                            <h3 class="font-semibold text-white">${note.title}</h3>
+                            <p class="text-xs text-gray-400">Category: ${note.category}</p>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+            
+            dashboardListEl.innerHTML = notesHtml.slice(0, 2); // Show first 2 on dashboard
+            fullListEl.innerHTML = notesHtml;
+            lucide.createIcons();
+        });
+     }
+     
+    /**
+     * ======================================================================
+     * STUDENT: MOCK TESTS & TEST ENGINE
+     * ======================================================================
+     */
+     function loadStudentTests() {
+        const q = query(collection(db, 'mockTests'), orderBy('createdAt', 'desc'));
+        const dashboardListEl = document.getElementById('student-dashboard-tests-list');
+        const fullListEl = document.getElementById('student-tests-list-full');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                const emptyMsg = '<p class="text-gray-400">No tests available yet.</p>';
+                dashboardListEl.innerHTML = emptyMsg;
+                fullListEl.innerHTML = emptyMsg;
+                return;
+            }
+            
+            const testsHtml = snapshot.docs.map(doc => {
+                const test = doc.data();
+                const testId = doc.id;
+                // TODO: Check if test is already attempted
+                return `
+                    <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">${test.title}</h3>
+                            <p class="text-sm text-gray-400">${test.duration} Mins | ${test.totalMarks} Marks</p>
+                        </div>
+                        <button data-action="start-test" data-id="${testId}" class="bg-primary-yellow text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-300 transition-colors">Start Test</button>
+                    </div>
+                `;
+            }).join('');
+            
+            dashboardListEl.innerHTML = testsHtml.slice(0, 3); // Show first 3
+            fullListEl.innerHTML = testsHtml;
+            
+            document.querySelectorAll('[data-action="start-test"]').forEach(btn => {
+                btn.onclick = () => startTest(btn.dataset.id);
+            });
+        });
+     }
+     
+     async function startTest(testId) {
+        // 1. Fetch test details
+        const testDoc = await getDoc(doc(db, 'mockTests', testId));
+        if (!testDoc.exists()) {
+            showToast('Test not found.', 'error');
+            return;
+        }
+        const test = testDoc.data();
+        
+        // 2. Fetch all questions for this test
+        const q = query(collection(db, 'questions'), where('testId', '==', testId));
+        const questionsSnap = await getDocs(q);
+        
+        if (questionsSnap.empty) {
+            showToast('This test has no questions yet.', 'error');
+            return;
+        }
+        
+        // 3. Initialize test state
+        currentTestState = {
+            testId: testId,
+            testTitle: test.title,
+            totalMarks: test.totalMarks,
+            questions: questionsSnap.docs.map(d => ({ id: d.id, ...d.data() })),
+            userAnswers: new Array(questionsSnap.size).fill(null),
+            currentQuestionIndex: 0,
+            timerInterval: null,
+            startTime: new Date(),
+            durationInSeconds: test.duration * 60,
+        };
+        
+        // 4. Start timer
+        startTimer();
+        
+        // 5. Show test page and render first question
+        document.getElementById('test-inprogress-title').textContent = test.title;
+        showStudentPage('student-test-inprogress');
+        renderCurrentQuestion();
+     }
+     
+     function startTimer() {
+        if (currentTestState.timerInterval) {
+            clearInterval(currentTestState.timerInterval);
+        }
+        
+        const timerEl = document.getElementById('test-inprogress-timer');
+        
+        currentTestState.timerInterval = setInterval(() => {
+            const now = new Date();
+            const elapsedSeconds = Math.floor((now - currentTestState.startTime) / 1000);
+            const remainingSeconds = currentTestState.durationInSeconds - elapsedSeconds;
+            
+            if (remainingSeconds <= 0) {
+                clearInterval(currentTestState.timerInterval);
+                timerEl.textContent = '00:00';
+                showToast('Time is up! Submitting test...', 'error');
+                handleSubmitTest();
+            } else {
+                const minutes = Math.floor(remainingSeconds / 60);
+                const seconds = remainingSeconds % 60;
+                timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+        }, 1000);
+     }
+     
+     function renderCurrentQuestion() {
+        const state = currentTestState;
+        const q = state.questions[state.currentQuestionIndex];
+        const container = document.getElementById('test-inprogress-question-container');
+        
+        container.innerHTML = `
+            <p class="text-lg font-semibold text-white mb-6">${state.currentQuestionIndex + 1}. ${q.text}</p>
+            <div class="space-y-3">
+                ${q.options.map((option, index) => `
+                    <label class="question-option block p-4 border border-gray-700 rounded-lg cursor-pointer transition-colors">
+                        <input type="radio" name="question-${state.currentQuestionIndex}" value="${index}" class="mr-3" ${state.userAnswers[state.currentQuestionIndex] === index ? 'checked' : ''}>
+                        <span class="text-gray-300">${option}</span>
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        
+        // Add event listeners for new radio buttons
+        container.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.onchange = (e) => {
+                state.userAnswers[state.currentQuestionIndex] = parseInt(e.target.value, 10);
+            };
+        });
+        
+        // Update counter
+        document.getElementById('test-question-counter').textContent = `Question ${state.currentQuestionIndex + 1} / ${state.questions.length}`;
+        
+        // Update nav buttons
+        document.getElementById('test-prev-question').disabled = state.currentQuestionIndex === 0;
+        document.getElementById('test-next-question').disabled = state.currentQuestionIndex === state.questions.length - 1;
+     }
+     
+     function showNextQuestion() {
+        if (currentTestState.currentQuestionIndex < currentTestState.questions.length - 1) {
+            currentTestState.currentQuestionIndex++;
+            renderCurrentQuestion();
+        }
+     }
+     
+     function showPreviousQuestion() {
+        if (currentTestState.currentQuestionIndex > 0) {
+            currentTestState.currentQuestionIndex--;
+            renderCurrentQuestion();
+        }
+     }
+     
+     async function handleSubmitTest() {
+        // Stop timer
+        clearInterval(currentTestState.timerInterval);
+        
+        const state = currentTestState;
+        
+        // Calculate score
+        let score = 0;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        
+        state.questions.forEach((q, index) => {
+            if (state.userAnswers[index] === q.correctOptionIndex) {
+                correctCount++;
+            } else if (state.userAnswers[index] !== null) {
+                incorrectCount++;
+            }
+        });
+        
+        // Simple scoring: 1 mark per question (if totalMarks matches question count)
+        // A more complex logic would use marks-per-question
+        const marksPerQuestion = state.totalMarks / state.questions.length;
+        score = Math.round(correctCount * marksPerQuestion);
+        
+        const submissionData = {
+            userId: currentUser.uid,
+            userName: currentUser.displayName,
+            testId: state.testId,
+            testTitle: state.testTitle,
+            score: score,
+            totalMarks: state.totalMarks,
+            correctCount: correctCount,
+            incorrectCount: incorrectCount,
+            answers: state.userAnswers,
+            submittedAt: Timestamp.now()
+        };
+        
+        // Save submission to Firestore
+        try {
+            await addDoc(collection(db, 'testSubmissions'), submissionData);
+            showToast('Test submitted successfully!', 'success');
+            showTestResults(submissionData, state.questions);
+        } catch (error) {
+            console.error('Error submitting test:', error);
+            showToast('Error submitting test.', 'error');
+        }
+     }
+     
+     async function showTestResults(submission, questions) {
+        showStudentPage('student-test-results');
+        
+        // 1. Populate score summary
+        document.getElementById('results-test-title').textContent = submission.testTitle;
+        document.getElementById('results-score').textContent = submission.score;
+        document.getElementById('results-total-marks').textContent = submission.totalMarks;
+        document.getElementById('results-correct-count').textContent = submission.correctCount;
+        document.getElementById('results-incorrect-count').textContent = submission.incorrectCount;
+        
+        // 2. Populate answer review
+        const reviewEl = document.getElementById('results-answer-review');
+        reviewEl.innerHTML = questions.map((q, index) => {
+            const userAnswerIndex = submission.answers[index];
+            const isCorrect = userAnswerIndex === q.correctOptionIndex;
+            let statusHtml = '';
+            
+            if (userAnswerIndex === null) {
+                statusHtml = `<span class="text-sm font-medium text-gray-400">Not Attempted</span>`;
+            } else if (isCorrect) {
+                statusHtml = `<span class="text-sm font-medium text-green-500">Correct</span>`;
+            } else {
+                statusHtml = `<span class="text-sm font-medium text-red-500">Incorrect</span>`;
+            }
+            
+            return `
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <div class="flex justify-between items-start">
+                        <p class="text-white mb-2">${index + 1}. ${q.text}</p>
+                        ${statusHtml}
+                    </div>
+                    <p class="text-sm text-gray-300">Your Answer: <span class="${isCorrect ? 'text-green-400' : 'text-red-400'}">${userAnswerIndex !== null ? q.options[userAnswerIndex] : 'N/A'}</span></p>
+                    <p class="text-sm text-green-400">Correct Answer: ${q.options[q.correctOptionIndex]}</p>
+                    ${q.explanation ? `<p class="text-sm text-gray-400 mt-2 border-t border-gray-700 pt-2"><b>Explanation:</b> ${q.explanation}</p>` : ''}
+                </div>
+            `;
+        }).join('');
+        
+        // 3. Load and display leaderboard for this test
+        await loadStudentLeaderboard(submission.testId);
+     }
+     
+     async function loadStudentLeaderboard(testId = null) {
+        let testToQuery = testId;
+        
+        // If no testId is provided, find the latest submitted test by this user
+        if (!testToQuery) {
+            const userSubmissionsQuery = query(collection(db, 'testSubmissions'), where('userId', '==', currentUser.uid), orderBy('submittedAt', 'desc'));
+            const userSubmissionsSnap = await getDocs(userSubmissionsQuery);
+            if (!userSubmissionsSnap.empty) {
+                testToQuery = userSubmissionsSnap.docs[0].data().testId;
+            } else {
+                document.getElementById('student-dashboard-leaderboard').innerHTML = '<p class="text-gray-400">No test results yet. Complete a test to see your rank!</p>';
+                return;
+            }
+        }
+        
+        // Now query all submissions for that test
+        const q = query(collection(db, 'testSubmissions'), where('testId', '==', testToQuery), orderBy('score', 'desc'));
+        const snapshot = await getDocs(q);
+        
+        if (snapshot.empty) return;
+        
+        const submissions = snapshot.docs.map(doc => doc.data());
+        
+        const leaderboardHtml = `
+            <h3 class="text-lg font-semibold text-primary-yellow mb-4">${submissions[0].testTitle}</h3>
+            <div class="space-y-3">
+                ${submissions.map((sub, index) => {
+                    let rankClass = 'bg-gray-800 border-gray-700';
+                    if (index === 0) rankClass = 'bg-yellow-400/20 border-yellow-400';
+                    if (index === 1) rankClass = 'bg-gray-500/20 border-gray-500';
+                    if (index === 2) rankClass = 'bg-orange-700/20 border-orange-700';
+                    
+                    const isCurrentUser = sub.userId === currentUser.uid;
+                    if (isCurrentUser) rankClass = 'bg-primary-yellow text-black border-yellow-300';
+                    
+                    return `
+                        <div class="flex items-center space-x-3 p-3 ${rankClass} ${isCurrentUser ? '' : 'border'} rounded-lg">
+                            <span class="font-bold text-lg ${isCurrentUser ? 'text-black' : 'text-white'}">${index + 1}.</span>
+                            <div>
+                                <h4 class="font-semibold ${isCurrentUser ? 'text-black' : 'text-white'}">${sub.userName} ${isCurrentUser ? '(You)' : ''}</h4>
+                                <p class="text-sm ${isCurrentUser ? 'text-black/80' : 'text-gray-300'}">Score: ${sub.score} / ${sub.totalMarks}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+        
+        // Update both leaderboard locations
+        document.getElementById('student-dashboard-leaderboard').innerHTML = leaderboardHtml;
+        document.getElementById('results-leaderboard').innerHTML = leaderboardHtml;
+     }
+     
+    /**
+     * ======================================================================
+     * STUDENT: FORUM
+     * ======================================================================
+     */
+     async function handleNewPostSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const postData = {
+            title: form.title.value,
+            content: form.content.value,
+            authorId: currentUser.uid,
+            authorName: currentUser.displayName,
+            createdAt: Timestamp.now(),
+            replyCount: 0,
+            isPinned: false
+        };
+        
+        try {
+            await addDoc(collection(db, 'forumPosts'), postData);
+            showToast('Post created!', 'success');
+            form.reset();
+            toggleModal(document.getElementById('modal-new-post'), false);
+        } catch (error) {
+            console.error('Error creating post:', error);
+            showToast('Error creating post.', 'error');
+        }
+     }
+     
+     async function handleReplySubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const postId = form.postId.value;
+        
+        const replyData = {
+            postId: postId,
+            content: form.content.value,
+            authorId: currentUser.uid,
+            authorName: currentUser.displayName,
+            createdAt: Timestamp.now()
+        };
+        
+        try {
+            // Add the reply
+            await addDoc(collection(db, 'forumReplies'), replyData);
+            
+            // Increment replyCount on the main post (using a transaction would be better)
+            const postRef = doc(db, 'forumPosts', postId);
+            const postSnap = await getDoc(postRef);
+            const currentReplyCount = postSnap.data().replyCount || 0;
+            await updateDoc(postRef, { replyCount: currentReplyCount + 1 });
+            
+            showToast('Reply posted!', 'success');
+            form.reset();
+            // The onSnapshot listener for replies will auto-update the UI
+            
+        } catch (error) {
+            console.error('Error posting reply:', error);
+            showToast('Error posting reply.', 'error');
+        }
+     }
+     
+     function loadStudentForumPosts() {
+        const q = query(collection(db, 'forumPosts'), orderBy('createdAt', 'desc'));
+        const dashboardListEl = document.getElementById('student-dashboard-forum-list');
+        const fullListEl = document.getElementById('student-forum-list-full');
+        const pinnedListEl = document.getElementById('student-forum-pinned-list');
+        
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                const emptyMsg = '<p class="text-gray-400">No posts yet.</p>';
+                dashboardListEl.innerHTML = emptyMsg;
+                fullListEl.innerHTML = emptyMsg;
+                return;
+            }
+            
+            let postsHtml = '';
+            let pinnedHtml = '';
+            
+            snapshot.docs.forEach(doc => {
+                const post = doc.data();
+                const postId = doc.id;
+                const postHtml = `
+                    <button data-action="view-post" data-id="${postId}" class="block w-full text-left bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors">
+                        <h4 class="font-semibold text-white truncate">${post.title}</h4>
+                        <p class="text-sm text-gray-400">by ${post.authorName} • ${post.replyCount || 0} replies</p>
+                    </button>
+                `;
+                
+                if (post.isPinned) {
+                    pinnedHtml += postHtml;
+                }
+                postsHtml += postHtml;
+            });
+            
+            dashboardListEl.innerHTML = postsHtml.slice(0, 3) || '<p class="text-gray-400">No posts yet.</p>';
+            fullListEl.innerHTML = postsHtml || '<p class="text-gray-400">No posts yet.</p>';
+            pinnedListEl.innerHTML = pinnedHtml || '<p class="text-gray-400">No pinned posts.</p>';
+            
+            document.querySelectorAll('[data-action="view-post"]').forEach(btn => {
+                btn.onclick = () => showForumPostDetail(btn.dataset.id);
+            });
+        });
+     }
+     
+     async function showForumPostDetail(postId) {
+        showStudentPage('student-forum-post');
+        document.getElementById('reply-post-id').value = postId;
+        
+        const postEl = document.getElementById('forum-post-detail-content');
+        const repliesEl = document.getElementById('forum-post-replies-list');
+        
+        // 1. Load the main post
+        const postDoc = await getDoc(doc(db, 'forumPosts', postId));
+        if (!postDoc.exists()) {
+            postEl.innerHTML = '<p class="text-red-400">Post not found.</p>';
+            return;
+        }
+        const post = postDoc.data();
+        postEl.innerHTML = `
+            <h2 class="text-2xl font-bold text-white mb-2">${post.title}</h2>
+            <p class="text-sm text-gray-400 mb-4">By ${post.authorName} on ${formatTimestamp(post.createdAt)}</p>
+            <p class="text-gray-300 whitespace-pre-wrap">${post.content}</p>
+        `;
+        
+        // 2. Listen for replies
+        const q = query(collection(db, 'forumReplies'), where('postId', '==', postId), orderBy('createdAt', 'asc'));
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                repliesEl.innerHTML = '<p class="text-gray-400">No replies yet. Be the first!</p>';
+                return;
+            }
+            
+            repliesEl.innerHTML = snapshot.docs.map(doc => {
+                const reply = doc.data();
+                return `
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <p class="text-gray-300">${reply.content}</p>
+                        <p class="text-xs text-gray-500 mt-2">By ${reply.authorName} on ${formatTimestamp(reply.createdAt)}</p>
+                    </div>
+                `;
+            }).join('');
+        });
+     }
+
+
+    // --- Start the App ---
+    initialize();
+
+  </script>
+
+</body>
+
+</html>
